@@ -103,6 +103,7 @@ func lndMain() error {
 
 	btcdUser := cfg.RPCUser
 	btcdPass := cfg.RPCPass
+	btcdTLSdisable := cfg.RPCClientTLSDisable
 
 	// TODO(roasbeef): parse config here and select chosen notifier instead
 	rpcConfig := &btcrpcclient.ConnConfig{
@@ -111,7 +112,7 @@ func lndMain() error {
 		User:                 btcdUser,
 		Pass:                 btcdPass,
 		Certificates:         rpcCert,
-		DisableTLS:           false,
+		DisableTLS:           btcdTLSdisable,
 		DisableConnectOnNew:  true,
 		DisableAutoReconnect: false,
 	}
